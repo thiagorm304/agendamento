@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento Salão</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Agendamento Salão</h1>
+      <p>Selecione a data, o serviço e preencha seus dados para agendar.</p>
+
+      <div class="form-group">
+        <label for="service">Serviço:</label>
+        <select id="service" onchange="getAvailableTimes()">
+          <option value="">Selecione um serviço</option>
+          <option value="Corte Feminino_60">Corte Feminino (60min)</option>
+          <option value="Corte Masculino_30">Corte Masculino (30min)</option>
+          <option value="Coloracao_120">Coloração (120min)</option>
+          <!-- Adicione mais conforme seus serviços -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="datePicker">Data:</label>
+        <input type="date" id="datePicker" onchange="getAvailableTimes()">
+      </div>
+
+      <div id="loading">Buscando horários disponíveis...</div>
+      <div id="errorMsg" class="error"></div>
+
+      <div class="form-group">
+        <label for="timeSlot">Horário Disponível:</label>
+        <select id="timeSlot" disabled>
+          <option value="">Selecione a data e serviço</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="customerName">Seu Nome:</label>
+        <input type="text" id="customerName" placeholder="Nome completo" oninput="validateForm()">
+      </div>
+
+      <div class="form-group">
+        <label for="customerEmail">Seu E-mail:</label>
+        <input type="email" id="customerEmail" placeholder="seu.email@exemplo.com" oninput="validateForm()">
+      </div>
+
+      <div class="form-group">
+        <label for="customerPhone">Seu Telefone:</label>
+        <input type="tel" id="customerPhone" placeholder="(XX) XXXXX-XXXX">
+      </div>
+
+      <div class="form-group">
+        <label for="observations">Observações:</label>
+        <textarea id="observations" placeholder="Detalhes adicionais (opcional)"></textarea>
+      </div>
+
+      <button id="bookButton" onclick="bookAppointment()" disabled>Agendar</button>
+
+      <div id="responseMessage"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
